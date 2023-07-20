@@ -22,6 +22,8 @@ export const PersonalHead = () => {
             <link rel="dns-prefetch" href="//www.google.com" />
             <link rel="dns-prefetch" href="//fonts.googleapis.com" />
             <link rel="dns-prefetch" href="//s.w.org" />
+
+            <meta name="google-site-verification" content="ChY0P1PHAk5596C_gwngAfuY5AUp7W2o_wJpH0oHTFk" />
         </head>
     )
 }
