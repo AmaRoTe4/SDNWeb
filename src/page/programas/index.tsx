@@ -5,7 +5,7 @@ export default function Programas() {
         <main className="w-screen overflow-x-hidden flex flex-col items-center">
             <header className="m-0 p-0">
                 <Link to="#" className="flex justify-center items-center">
-                    <img src="/public/images/sdn.png" alt="titulo_sdn" className="w-[100px] md:w-[200px] hover:cursor-pointer hover:scale-125" />
+                    <img src="/images/sdn.png" alt="titulo_sdn" className="w-[100px] md:w-[200px] hover:cursor-pointer hover:scale-125" />
                 </Link>
             </header>
             <div className="w-full px-2 py-3 bg-slate-200">
@@ -63,7 +63,7 @@ export default function Programas() {
 
 const BotonDePrueba = () => {
     return (
-        <a className="w-[90%] hover:opacity-90 flex justify-center items-center rounded-lg bg-blue-600 p-3 text-[20px]" href="https://programa-comercial-prueba.vercel.app/">
+        <a className="text-white w-[90%] hover:opacity-90 flex justify-center items-center rounded-lg bg-blue-600 p-3 text-[20px]" href="https://programa-comercial-prueba.vercel.app/">
             Sistema de prueba
         </a>
     )
@@ -71,7 +71,7 @@ const BotonDePrueba = () => {
 
 const BotonContacto = () => {
     return (
-        <a className="w-[90%] hover:opacity-90 flex justify-center items-center rounded-lg bg-green-600 p-3 text-[20px]" href="https://wa.me/543482377231">
+        <a className="text-white w-[90%] hover:opacity-90 flex justify-center items-center rounded-lg bg-green-600 p-3 text-[20px]" href="https://wa.me/543482377231">
             WhatsApp
         </a>
     )
