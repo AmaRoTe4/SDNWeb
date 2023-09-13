@@ -1,0 +1,95 @@
+---
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-500.css';
+import { ViewTransitions } from 'astro:transitions';
+import Footer from '../components/layout/Footer.astro';
+import Header from '../components/layout/Header.astro';
+
+interface Props {
+  description: string;
+  title: string;
+}
+
+const { description, title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" x-cloak x-data :class="{ 'dark': $store.theme.isDark }">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <meta
+      name="keywords"
+      content="SDN, Sincronizacion de datos del norte, Norte Santafesino, Reconquista, Reconquista Santa Fe, Santa Fe, Chaco, Resistencia, Malabrigo Santa Fe, Malabrigo, Argentina, Avellaneda, Avellaneda Santa Fe, Software de datos, Software para empresas, Software para kioscos, Software para comercios"
+    />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="AdsBot-Google" content="noindex" />
+
+    <link rel="canonical" href="https://sdnsoftware.com.ar" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="SDN Software" />
+    <meta property="og:type" content="software" />
+    <meta
+      property="og:title"
+      content="SDN Software | Sincronización de datos del norte | SDN | Sincronización de datos software"
+    />
+    <meta property="og:url" content="https://sdnsoftware.com.ar" />
+    <meta name="google" content="nositelinkssearchbox" />
+    <link rel="dns-prefetch" href="//www.google.com" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//s.w.org" />
+
+    <meta name="google-site-verification" content="ChY0P1PHAk5596C_gwngAfuY5AUp7W2o_wJpH0oHTFk" />
+    <ViewTransitions />
+  </head>
+  <body
+    class="bg-primary-50 text-primary-950 antialiased transition dark:bg-primary-950 dark:text-primary-200"
+  >
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <style is:global>
+      [x-cloak] {
+        display: none !important;
+      }
+    </style>
+    <script>
+      import Alpine from 'alpinejs';
+      import collapse from '@alpinejs/collapse';
+
+      Alpine.plugin(collapse);
+
+      Alpine.store('theme', {
+        init() {
+          this.isDark = (() => {
+            if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+              return localStorage.getItem('theme') === 'dark';
+            }
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+              return true;
+            }
+            return false;
+          })();
+        },
+
+        isDark: false,
+
+        toggle() {
+          this.isDark = !this.isDark;
+          localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+        },
+      });
+
+      window.Alpine = Alpine;
+      Alpine.start();
+    </script>
+  </body>
+</html>
